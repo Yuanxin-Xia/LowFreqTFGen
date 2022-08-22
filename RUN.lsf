@@ -1,0 +1,53 @@
+#!/bin/sh
+# embedded options to bsub - start with #BSUB
+# -- job name ---
+#BSUB -J Test_HighFreq
+# -- Notify me by email when execution begins  --
+#BSUB -B
+# -- Notify me by email when execution ends    --
+#BSUB -N
+# -- email address -- 
+# please uncomment the following line and put in your e-mail address,
+# if you want to receive e-mail notifications on a non-default address
+#BSUB -u xiayuanxin98@gmail.com
+# -- estimated wall clock time (execution time) --
+#BSUB -W  72:00
+### -- specify that we need 32GB of memory per slot* -- 
+#BSUB -R "rusage[mem=30GB]"
+
+#BSUB -R "select[model == XeonGold6226R]"
+# -- parallel environment requests: 8 "processes" --
+#BSUB -n 4
+### -- specify affinity: 6 "cores" for each "process" --
+#BSUB -R "affinity[core(8)]"
+### -- specify how the MPI processes must be assigned: 8 on each node --
+#BSUB -R "span[ptile=16]"
+### -- Specify the output and error file. %J is the job-id -- 
+### -- -o and -e mean append, -oo and -eo mean overwrite -- 
+#BSUB -o Output.out 
+#BSUB -e Error.err 
+
+# -- end of LSF options --
+
+
+
+### Clear log file
+cat /dev/null > screenout.txt
+cat /dev/null > COMSOL_Progress.txt
+cat /dev/null > TF.txt
+
+module load comsol/6.0 
+module load matlab/R2022a
+
+### unset JAVA_TOOL_OPTIONS
+
+# Set IntelMPI environment variables
+export I_MPI_HYDRA_BOOTSTRAP=lsf
+
+comsol mphserver -nn $LSB_DJOB_NUMPROC -np $OMP_NUM_THREADS -silent &
+
+matlab -nodisplay <MATLAB_LiveLink.m> screenout.txt
+
+
+
+

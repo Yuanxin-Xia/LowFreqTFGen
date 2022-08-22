@@ -1,0 +1,42 @@
+(n-62-11-65:0,1,2,3)
+
+[0] MPI startup(): I_MPI_SHM_LMT environment variable is not supported.
+[0] MPI startup(): Similar variables:
+	 I_MPI_SHM_HEAP
+	 I_MPI_SHM
+	 I_MPI_SHM_OPT
+	 I_MPI_SHM_CMA
+	 I_MPI_SHM_THP
+[0] MPI startup(): I_MPI_FABRICS_LIST environment variable is not supported.
+[0] MPI startup(): Similar variables:
+	 I_MPI_FABRICS
+[0] MPI startup(): To check the list of supported variables, use the impi_info utility or refer to https://software.intel.com/en-us/mpi-library/documentation/get-started.
+Node 0 is running on host: n-62-11-65
+Node 0 has address: n-62-11-65
+Node 1 is running on host: n-62-11-65
+Node 1 has address: n-62-11-65
+Node 2 is running on host: n-62-11-65
+Node 2 has address: n-62-11-65
+Node 3 is running on host: n-62-11-65
+Node 3 has address: n-62-11-65
+(n-62-11-64:0,1,2,3)
+
+[0] MPI startup(): I_MPI_SHM_LMT environment variable is not supported.
+[0] MPI startup(): Similar variables:
+	 I_MPI_SHM_HEAP
+	 I_MPI_SHM
+	 I_MPI_SHM_OPT
+	 I_MPI_SHM_CMA
+	 I_MPI_SHM_THP
+[0] MPI startup(): I_MPI_FABRICS_LIST environment variable is not supported.
+[0] MPI startup(): Similar variables:
+	 I_MPI_FABRICS
+[0] MPI startup(): To check the list of supported variables, use the impi_info utility or refer to https://software.intel.com/en-us/mpi-library/documentation/get-started.
+Node 0 is running on host: n-62-11-64
+Node 0 has address: n-62-11-64
+Node 1 is running on host: n-62-11-64
+Node 1 has address: n-62-11-64
+Node 2 is running on host: n-62-11-64
+Node 2 has address: n-62-11-64
+Node 3 is running on host: n-62-11-64
+Node 3 has address: n-62-11-64
