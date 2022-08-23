@@ -52,7 +52,7 @@ LxN LyN LzN
 ]
 ```
 ### Impedance of different walls
-Copy your frequency independent impedance to the ImpedanceFile folder and also edit impedance in the MAIN.m
+Copy your frequency dependent impedance to the ImpedanceFile folder and also edit impedance in the MAIN.m
 <br>
 ```
 S1 = 'A';
