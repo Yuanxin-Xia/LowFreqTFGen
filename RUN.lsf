@@ -1,7 +1,7 @@
 #!/bin/sh
 # embedded options to bsub - start with #BSUB
 # -- job name ---
-#BSUB -J Test_HighFreq
+#BSUB -J D1T1-XIA
 # -- Notify me by email when execution begins  --
 #BSUB -B
 # -- Notify me by email when execution ends    --
@@ -14,14 +14,15 @@
 #BSUB -W  72:00
 ### -- specify that we need 32GB of memory per slot* -- 
 #BSUB -R "rusage[mem=30GB]"
-
 #BSUB -R "select[model == XeonGold6226R]"
 # -- parallel environment requests: 8 "processes" --
 #BSUB -n 4
 ### -- specify affinity: 6 "cores" for each "process" --
 #BSUB -R "affinity[core(8)]"
 ### -- specify how the MPI processes must be assigned: 8 on each node --
-#BSUB -R "span[ptile=16]"
+##BSUB -R "span[ptile=8]"
+### --- all can run on a single node ---
+#BSUB -R "span[hosts=1]"
 ### -- Specify the output and error file. %J is the job-id -- 
 ### -- -o and -e mean append, -oo and -eo mean overwrite -- 
 #BSUB -o Output.out 
@@ -43,11 +44,14 @@ module load matlab/R2022a
 
 # Set IntelMPI environment variables
 export I_MPI_HYDRA_BOOTSTRAP=lsf
+unset I_MPI_SHM_LMT 
+unset I_MPI_FABRICS_LIST
 
-comsol mphserver -nn $LSB_DJOB_NUMPROC -np $OMP_NUM_THREADS -silent &
+CSRDIR=/work3/s213256/CS_recoveries/$LSB_JOBID
 
-matlab -nodisplay <MATLAB_LiveLink.m> screenout.txt
+mkdir -p $CSRDIR
 
+comsol mphserver -recoverydir $CSRDIR -nn $LSB_DJOB_NUMPROC -np $OMP_NUM_THREADS -silent &
 
-
+matlab -batch MATLAB_LiveLink > screenout.txt
 
