@@ -4,6 +4,8 @@ Install Transfer function generator in DTU high performance computer system
 
 Implementation of COMSOL MATLAB LiveLink
 
+This version is develop for random sources and receivers, contact Author if you need specify source and receiver.
+
 contact: xiayuanxin98@gmail.com | s213256@dtu.dk
 
 OUTPUT: TF.txt
