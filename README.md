@@ -22,7 +22,7 @@ LxN LyN LzN ... Transfer functions in defined frequency range/ interval
 ### To access DTUs HPC system, log in using the command (see section about HPC system as well) <br>
 `> ssh username@login1.gbar.dtu.dk`
 ### Clone the code from git in the home user directory ~/ <br>
- `> git clone https://github.com/Spoke-arrows/TFs`
+ `> git clone https://github.com/Spoke-arrows/LowFrecTFGen`
  
 ## RUN the simulation
 ### Make sure enter the folder   <br>
